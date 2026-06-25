@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "https://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/pointage_epf?serverTimezone=Africa/Dakar&amp;useSSL=false&amp;allowPublicKeyRetrieval=true</property>
+        <property name="hibernate.connection.username">pointage_user</property>
+        <property name="hibernate.connection.password">pointage_pwd</property>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <mapping class="sn.epf.pointage.model.Professeur"/>
+        <mapping class="sn.epf.pointage.model.Utilisateur"/>
+        <mapping class="sn.epf.pointage.model.Cours"/>
+        <mapping class="sn.epf.pointage.model.Salle"/>
+        <mapping class="sn.epf.pointage.model.Assignation"/>
+        <mapping class="sn.epf.pointage.model.PeriodiciteCours"/>
+        <mapping class="sn.epf.pointage.model.SeancePlanifiee"/>
+        <mapping class="sn.epf.pointage.model.Pointage"/>
+        <mapping class="sn.epf.pointage.model.RapportMensuel"/>
+        <mapping class="sn.epf.pointage.model.Alerte"/>
+        <mapping class="sn.epf.pointage.model.JournalConnexion"/>
+    </session-factory>
+</hibernate-configuration>
