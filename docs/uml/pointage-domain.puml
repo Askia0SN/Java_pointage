@@ -1,0 +1,214 @@
+@startuml
+title Systeme de gestion de pointage des professeurs - Modele de domaine
+
+hide circle
+hide empty methods
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+package "Gestion des professeurs" {
+  class Professeur <<Entity>> {
+    - id : Long
+    - matricule : String {unique}
+    - nom : String
+    - prenom : String
+    - email : String {unique}
+    - telephone : String
+    - typeContrat : TypeContrat
+    - tauxHoraireXOF : BigDecimal
+    - dateEmbauche : LocalDate
+    - photo : String
+    - actif : boolean
+  }
+
+  class Utilisateur <<Entity>> {
+    - id : Long
+    - login : String {unique}
+    - motDePasseHash : String
+    - role : Role
+    - actif : boolean
+  }
+}
+
+package "Enseignement et planification" {
+  class Cours <<Entity>> {
+    - id : Long
+    - code : String {unique}
+    - intitule : String
+    - volumeHoraireTotal : BigDecimal
+    - niveauEtude : String
+    - filiere : String
+    - semestre : String
+  }
+
+  class Salle <<Entity>> {
+    - id : Long
+    - nom : String {unique}
+    - capacite : int
+    - batiment : String
+    - equipements : String
+  }
+
+  class Assignation <<Entity>> {
+    - id : Long
+    - anneeAcademique : String
+    - heuresPrevues : BigDecimal
+  }
+
+  class PeriodiciteCours <<Entity>> {
+    - id : Long
+    - jourSemaine : DayOfWeek
+    - heureDebut : LocalTime
+    - heureFin : LocalTime
+    - frequence : FrequenceCours
+    - dateDebut : LocalDate
+    - dateFin : LocalDate
+  }
+
+  class SeancePlanifiee <<Entity>> {
+    - id : Long
+    - dateHeure : LocalDateTime
+    - dureeMinutes : int
+    - statut : StatutSeance
+  }
+}
+
+package "Pointage et comptabilite" {
+  class Pointage <<Entity>> {
+    - id : Long
+    - heurePointage : LocalDateTime
+    - typePointage : TypePointage
+    - statut : StatutPointage
+    - observations : String
+  }
+
+  class RapportMensuel <<Entity>> {
+    - id : Long
+    - mois : int
+    - annee : int
+    - heuresRealisees : BigDecimal
+    - montantXOF : BigDecimal
+    - statut : StatutRapport
+    - dateGeneration : LocalDateTime
+  }
+}
+
+package "Securite et notifications" {
+  class Alerte <<Entity>> {
+    - id : Long
+    - type : TypeAlerte
+    - message : String
+    - dateCreation : LocalDateTime
+    - lue : boolean
+  }
+
+  class JournalConnexion <<Entity>> {
+    - id : Long
+    - action : ActionConnexion
+    - horodatage : LocalDateTime
+    - adresseIP : String
+  }
+}
+
+enum TypeContrat {
+  VACATAIRE
+  PERMANENT
+}
+
+enum Role {
+  ADMIN
+  SCOLARITE
+  PROFESSEUR
+}
+
+enum FrequenceCours {
+  HEBDOMADAIRE
+  BIMENSUELLE
+}
+
+enum StatutSeance {
+  PLANIFIEE
+  REALISEE
+  ANNULEE
+  REPORTEE
+}
+
+enum TypePointage {
+  DEBUT
+  FIN
+}
+
+enum StatutPointage {
+  A_L_HEURE
+  EN_RETARD
+}
+
+enum StatutRapport {
+  EN_ATTENTE
+  VALIDE
+  PAYE
+}
+
+enum TypeAlerte {
+  RETARD
+  ABSENCE
+}
+
+enum ActionConnexion {
+  CONNEXION
+  DECONNEXION
+  ECHEC_CONNEXION
+}
+
+' Associations principales
+Professeur "1" -- "0..1" Utilisateur : possede >
+Professeur "1" -- "0..*" Assignation : recoit >
+Cours "1" -- "0..*" Assignation : concerne >
+Salle "1" -- "0..*" Assignation : accueille >
+Assignation "1" *-- "1..*" PeriodiciteCours : definit >
+Assignation "1" *-- "0..*" SeancePlanifiee : genere >
+SeancePlanifiee "1" *-- "0..2" Pointage : comporte >
+Professeur "1" -- "0..*" Pointage : effectue >
+Professeur "1" -- "0..*" RapportMensuel : possede >
+RapportMensuel ..> Pointage : agrege les pointages du mois >
+SeancePlanifiee "0..1" -- "0..*" Alerte : declenche >
+Professeur "1" -- "0..*" Alerte : concerne >
+Utilisateur "1" -- "0..*" JournalConnexion : produit >
+
+' Utilisation des enumerations
+Professeur ..> TypeContrat
+Utilisateur ..> Role
+PeriodiciteCours ..> FrequenceCours
+SeancePlanifiee ..> StatutSeance
+Pointage ..> TypePointage
+Pointage ..> StatutPointage
+RapportMensuel ..> StatutRapport
+Alerte ..> TypeAlerte
+JournalConnexion ..> ActionConnexion
+
+note right of Pointage
+  Contrainte unique :
+  (seance_id, professeur_id, typePointage)
+
+  Une seance admet au maximum
+  un DEBUT et un FIN.
+end note
+
+note bottom of RapportMensuel
+  Contrainte unique :
+  (professeur_id, mois, annee)
+end note
+
+note bottom of SeancePlanifiee
+  RG-01 : DEBUT autorise de -15 a +5 min.
+  RG-02 : DEBUT present => REALISEE.
+  RG-03 : apres +5 min => EN_RETARD + alerte.
+end note
+
+note "Alerte et JournalConnexion completent le modele car les notifications et la journalisation sont exigees par le sujet." as N1
+N1 .. Alerte
+N1 .. JournalConnexion
+
+@enduml
