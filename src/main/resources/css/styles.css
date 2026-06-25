@@ -1,0 +1,37 @@
+.sidebar {
+    -fx-background-color: #1A2744;
+}
+
+.nav-button:hover {
+    -fx-background-color: #2E75B6;
+}
+
+.table-view .column-header {
+    -fx-background-color: #1F4E79;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #D6E8F7;
+}
+
+.status-ok {
+    -fx-text-fill: #1E8449;
+}
+
+.status-retard {
+    -fx-text-fill: #D35400;
+}
+
+.status-absent {
+    -fx-text-fill: #C0392B;
+}
+
+.dashboard-card {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.12), 8, 0, 0, 2);
+}
