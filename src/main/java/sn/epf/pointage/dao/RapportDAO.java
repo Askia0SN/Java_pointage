@@ -17,7 +17,9 @@ public class RapportDAO extends AbstractDAO<RapportMensuel, Long> {
         try (Session session = openSession()) {
             return session.createQuery(
                             """
+                            select r
                             from RapportMensuel r
+                            join fetch r.professeur
                             where r.professeur.id = :professeurId
                               and r.mois = :mois
                               and r.annee = :annee
@@ -35,7 +37,9 @@ public class RapportDAO extends AbstractDAO<RapportMensuel, Long> {
         try (Session session = openSession()) {
             return session.createQuery(
                             """
+                            select r
                             from RapportMensuel r
+                            join fetch r.professeur
                             where r.mois = :mois
                               and r.annee = :annee
                             order by r.professeur.nom, r.professeur.prenom
@@ -52,13 +56,30 @@ public class RapportDAO extends AbstractDAO<RapportMensuel, Long> {
         try (Session session = openSession()) {
             return session.createQuery(
                             """
+                            select r
                             from RapportMensuel r
+                            join fetch r.professeur
                             where r.statut <> :statutPaye
                             order by r.annee desc, r.mois desc
                             """,
                             RapportMensuel.class
                     )
                     .setParameter("statutPaye", StatutRapport.PAYE)
+                    .getResultList();
+        }
+    }
+
+    public List<RapportMensuel> findAllWithProfesseur() {
+        try (Session session = openSession()) {
+            return session.createQuery(
+                            """
+                            select r
+                            from RapportMensuel r
+                            join fetch r.professeur
+                            order by r.annee desc, r.mois desc, r.professeur.nom, r.professeur.prenom
+                            """,
+                            RapportMensuel.class
+                    )
                     .getResultList();
         }
     }
