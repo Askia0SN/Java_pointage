@@ -27,7 +27,7 @@
             <Button maxWidth="Infinity" text="Professeurs" onAction="#handleShowProfesseurs" styleClass="nav-button"/>
             <Button maxWidth="Infinity" text="Planning" onAction="#handleShowPlanning" styleClass="nav-button"/>
             <Button maxWidth="Infinity" text="Pointage" onAction="#handleShowPointage" styleClass="nav-button"/>
-            <Button maxWidth="Infinity" text="Rapports" styleClass="nav-button"/>
+            <Button maxWidth="Infinity" text="Rapports" onAction="#handleShowRapports" styleClass="nav-button"/>
         </VBox>
     </left>
 

@@ -64,6 +64,12 @@ public class DashboardController {
     }
 
     @FXML
+    private void handleShowRapports() throws Exception {
+        Parent rapportsView = FXMLLoader.load(getClass().getResource("/fxml/rapports.fxml"));
+        rootLayout.setCenter(creerVueScrollable(rapportsView));
+    }
+
+    @FXML
     private void handleLogout() throws Exception {
         authService.deconnecter("127.0.0.1");
 
