@@ -24,6 +24,17 @@ public class UtilisateurDAO extends AbstractDAO<Utilisateur, Long> {
         }
     }
 
+    public Optional<Utilisateur> findByProfesseurId(Long professeurId) {
+        try (Session session = openSession()) {
+            return session.createQuery(
+                            "from Utilisateur u where u.professeurLie.id = :professeurId",
+                            Utilisateur.class
+                    )
+                    .setParameter("professeurId", professeurId)
+                    .uniqueResultOptional();
+        }
+    }
+
     public List<Utilisateur> findByRole(Role role) {
         try (Session session = openSession()) {
             return session.createQuery(

@@ -23,6 +23,28 @@ public class ProfesseurDAO extends AbstractDAO<Professeur, Long> {
         }
     }
 
+    public Optional<Professeur> findByEmail(String email) {
+        try (Session session = openSession()) {
+            return session.createQuery(
+                            "from Professeur p where lower(p.email) = lower(:email)",
+                            Professeur.class
+                    )
+                    .setParameter("email", email)
+                    .uniqueResultOptional();
+        }
+    }
+
+    public long countByMatriculePrefix(String matriculePrefix) {
+        try (Session session = openSession()) {
+            return session.createQuery(
+                            "select count(p) from Professeur p where p.matricule like :prefix",
+                            Long.class
+                    )
+                    .setParameter("prefix", matriculePrefix + "%")
+                    .getSingleResult();
+        }
+    }
+
     public List<Professeur> findActifs() {
         try (Session session = openSession()) {
             return session.createQuery(
