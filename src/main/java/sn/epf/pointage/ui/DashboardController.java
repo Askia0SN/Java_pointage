@@ -57,6 +57,12 @@ public class DashboardController {
     }
 
     @FXML
+    private void handleShowPointage() throws Exception {
+        Parent pointageView = FXMLLoader.load(getClass().getResource("/fxml/pointage.fxml"));
+        rootLayout.setCenter(pointageView);
+    }
+
+    @FXML
     private void handleLogout() throws Exception {
         authService.deconnecter("127.0.0.1");
 
