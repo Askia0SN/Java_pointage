@@ -107,4 +107,30 @@ public class SeanceDAO extends AbstractDAO<SeancePlanifiee, Long> {
                     .getResultList();
         }
     }
+
+    public List<SeancePlanifiee> findByProfesseurStatutAndMois(
+            Long professeurId,
+            StatutSeance statut,
+            int mois,
+            int annee
+    ) {
+        try (Session session = openSession()) {
+            return session.createQuery(
+                            """
+                            from SeancePlanifiee s
+                            where s.assignation.professeur.id = :professeurId
+                              and s.statut = :statut
+                              and month(s.dateHeure) = :mois
+                              and year(s.dateHeure) = :annee
+                            order by s.dateHeure
+                            """,
+                            SeancePlanifiee.class
+                    )
+                    .setParameter("professeurId", professeurId)
+                    .setParameter("statut", statut)
+                    .setParameter("mois", mois)
+                    .setParameter("annee", annee)
+                    .getResultList();
+        }
+    }
 }
