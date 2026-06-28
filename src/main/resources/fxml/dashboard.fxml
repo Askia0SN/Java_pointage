@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -16,11 +18,15 @@
             <padding>
                 <Insets top="24" right="16" bottom="24" left="16"/>
             </padding>
-            <Label text="EPF Pointage" styleClass="sidebar-title"/>
+            <ImageView fitWidth="190" preserveRatio="true" smooth="true">
+                <image>
+                    <Image url="@../images/epf-pointage-logo.png"/>
+                </image>
+            </ImageView>
             <Button maxWidth="Infinity" text="Dashboard" onAction="#handleShowDashboard" styleClass="nav-button"/>
             <Button maxWidth="Infinity" text="Professeurs" onAction="#handleShowProfesseurs" styleClass="nav-button"/>
             <Button maxWidth="Infinity" text="Planning" onAction="#handleShowPlanning" styleClass="nav-button"/>
-            <Button maxWidth="Infinity" text="Pointage" styleClass="nav-button"/>
+            <Button maxWidth="Infinity" text="Pointage" onAction="#handleShowPointage" styleClass="nav-button"/>
             <Button maxWidth="Infinity" text="Rapports" styleClass="nav-button"/>
         </VBox>
     </left>
