@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sn.epf.pointage.model.Utilisateur;
 import sn.epf.pointage.model.enums.Role;
@@ -14,6 +16,12 @@ import sn.epf.pointage.service.AuthService;
 public class DashboardController {
 
     private final AuthService authService = new AuthService();
+
+    @FXML
+    private BorderPane rootLayout;
+
+    @FXML
+    private VBox dashboardContent;
 
     @FXML
     private Label welcomeLabel;
@@ -29,6 +37,17 @@ public class DashboardController {
         welcomeLabel.setText("Bienvenue, " + utilisateur.getLogin());
         roleLabel.setText("Role : " + role);
         infoLabel.setText(messageParRole(role));
+    }
+
+    @FXML
+    private void handleShowDashboard() {
+        rootLayout.setCenter(dashboardContent);
+    }
+
+    @FXML
+    private void handleShowProfesseurs() throws Exception {
+        Parent professeursView = FXMLLoader.load(getClass().getResource("/fxml/professeurs.fxml"));
+        rootLayout.setCenter(professeursView);
     }
 
     @FXML
