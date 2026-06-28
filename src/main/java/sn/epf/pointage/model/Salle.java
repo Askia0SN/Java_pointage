@@ -32,4 +32,48 @@ public class Salle {
 
     @OneToMany(mappedBy = "salle", fetch = FetchType.LAZY)
     private List<Assignation> assignations = new ArrayList<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public int getCapacite() {
+        return capacite;
+    }
+
+    public void setCapacite(int capacite) {
+        this.capacite = capacite;
+    }
+
+    public String getBatiment() {
+        return batiment;
+    }
+
+    public void setBatiment(String batiment) {
+        this.batiment = batiment;
+    }
+
+    public String getEquipements() {
+        return equipements;
+    }
+
+    public void setEquipements(String equipements) {
+        this.equipements = equipements;
+    }
+
+    public List<Assignation> getAssignations() {
+        return assignations;
+    }
+
+    public void setAssignations(List<Assignation> assignations) {
+        this.assignations = assignations;
+    }
 }

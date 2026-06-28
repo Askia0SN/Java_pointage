@@ -43,4 +43,56 @@ public class Alerte {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "professeur_id", nullable = false)
     private Professeur professeur;
+
+    public Long getId() {
+        return id;
+    }
+
+    public TypeAlerte getType() {
+        return type;
+    }
+
+    public void setType(TypeAlerte type) {
+        this.type = type;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public LocalDateTime getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(LocalDateTime dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public boolean isLue() {
+        return lue;
+    }
+
+    public void setLue(boolean lue) {
+        this.lue = lue;
+    }
+
+    public SeancePlanifiee getSeance() {
+        return seance;
+    }
+
+    public void setSeance(SeancePlanifiee seance) {
+        this.seance = seance;
+    }
+
+    public Professeur getProfesseur() {
+        return professeur;
+    }
+
+    public void setProfesseur(Professeur professeur) {
+        this.professeur = professeur;
+    }
 }

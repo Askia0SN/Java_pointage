@@ -51,4 +51,56 @@ public class Pointage {
     private StatutPointage statut;
 
     private String observations;
+
+    public Long getId() {
+        return id;
+    }
+
+    public SeancePlanifiee getSeance() {
+        return seance;
+    }
+
+    public void setSeance(SeancePlanifiee seance) {
+        this.seance = seance;
+    }
+
+    public Professeur getProfesseur() {
+        return professeur;
+    }
+
+    public void setProfesseur(Professeur professeur) {
+        this.professeur = professeur;
+    }
+
+    public LocalDateTime getHeurePointage() {
+        return heurePointage;
+    }
+
+    public void setHeurePointage(LocalDateTime heurePointage) {
+        this.heurePointage = heurePointage;
+    }
+
+    public TypePointage getTypePointage() {
+        return typePointage;
+    }
+
+    public void setTypePointage(TypePointage typePointage) {
+        this.typePointage = typePointage;
+    }
+
+    public StatutPointage getStatut() {
+        return statut;
+    }
+
+    public void setStatut(StatutPointage statut) {
+        this.statut = statut;
+    }
+
+    public String getObservations() {
+        return observations;
+    }
+
+    public void setObservations(String observations) {
+        this.observations = observations;
+    }
 }

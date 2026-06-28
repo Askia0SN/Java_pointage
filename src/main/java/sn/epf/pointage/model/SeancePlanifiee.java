@@ -45,4 +45,56 @@ public class SeancePlanifiee {
 
     @OneToMany(mappedBy = "seance", fetch = FetchType.LAZY)
     private List<Alerte> alertes = new ArrayList<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public Assignation getAssignation() {
+        return assignation;
+    }
+
+    public void setAssignation(Assignation assignation) {
+        this.assignation = assignation;
+    }
+
+    public LocalDateTime getDateHeure() {
+        return dateHeure;
+    }
+
+    public void setDateHeure(LocalDateTime dateHeure) {
+        this.dateHeure = dateHeure;
+    }
+
+    public int getDureeMinutes() {
+        return dureeMinutes;
+    }
+
+    public void setDureeMinutes(int dureeMinutes) {
+        this.dureeMinutes = dureeMinutes;
+    }
+
+    public StatutSeance getStatut() {
+        return statut;
+    }
+
+    public void setStatut(StatutSeance statut) {
+        this.statut = statut;
+    }
+
+    public List<Pointage> getPointages() {
+        return pointages;
+    }
+
+    public void setPointages(List<Pointage> pointages) {
+        this.pointages = pointages;
+    }
+
+    public List<Alerte> getAlertes() {
+        return alertes;
+    }
+
+    public void setAlertes(List<Alerte> alertes) {
+        this.alertes = alertes;
+    }
 }

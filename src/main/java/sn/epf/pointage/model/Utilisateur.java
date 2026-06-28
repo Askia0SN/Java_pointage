@@ -44,4 +44,56 @@ public class Utilisateur {
 
     @OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
     private List<JournalConnexion> journauxConnexion = new ArrayList<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getMotDePasseHash() {
+        return motDePasseHash;
+    }
+
+    public void setMotDePasseHash(String motDePasseHash) {
+        this.motDePasseHash = motDePasseHash;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public boolean isActif() {
+        return actif;
+    }
+
+    public void setActif(boolean actif) {
+        this.actif = actif;
+    }
+
+    public Professeur getProfesseurLie() {
+        return professeurLie;
+    }
+
+    public void setProfesseurLie(Professeur professeurLie) {
+        this.professeurLie = professeurLie;
+    }
+
+    public List<JournalConnexion> getJournauxConnexion() {
+        return journauxConnexion;
+    }
+
+    public void setJournauxConnexion(List<JournalConnexion> journauxConnexion) {
+        this.journauxConnexion = journauxConnexion;
+    }
 }

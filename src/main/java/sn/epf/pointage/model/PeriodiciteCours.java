@@ -48,4 +48,64 @@ public class PeriodiciteCours {
 
     @Column(nullable = false)
     private LocalDate dateFin;
+
+    public Long getId() {
+        return id;
+    }
+
+    public Assignation getAssignation() {
+        return assignation;
+    }
+
+    public void setAssignation(Assignation assignation) {
+        this.assignation = assignation;
+    }
+
+    public DayOfWeek getJourSemaine() {
+        return jourSemaine;
+    }
+
+    public void setJourSemaine(DayOfWeek jourSemaine) {
+        this.jourSemaine = jourSemaine;
+    }
+
+    public LocalTime getHeureDebut() {
+        return heureDebut;
+    }
+
+    public void setHeureDebut(LocalTime heureDebut) {
+        this.heureDebut = heureDebut;
+    }
+
+    public LocalTime getHeureFin() {
+        return heureFin;
+    }
+
+    public void setHeureFin(LocalTime heureFin) {
+        this.heureFin = heureFin;
+    }
+
+    public FrequenceCours getFrequence() {
+        return frequence;
+    }
+
+    public void setFrequence(FrequenceCours frequence) {
+        this.frequence = frequence;
+    }
+
+    public LocalDate getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(LocalDate dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public LocalDate getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(LocalDate dateFin) {
+        this.dateFin = dateFin;
+    }
 }

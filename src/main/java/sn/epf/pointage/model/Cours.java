@@ -41,4 +41,64 @@ public class Cours {
 
     @OneToMany(mappedBy = "cours", fetch = FetchType.LAZY)
     private List<Assignation> assignations = new ArrayList<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getIntitule() {
+        return intitule;
+    }
+
+    public void setIntitule(String intitule) {
+        this.intitule = intitule;
+    }
+
+    public BigDecimal getVolumeHoraireTotal() {
+        return volumeHoraireTotal;
+    }
+
+    public void setVolumeHoraireTotal(BigDecimal volumeHoraireTotal) {
+        this.volumeHoraireTotal = volumeHoraireTotal;
+    }
+
+    public String getNiveauEtude() {
+        return niveauEtude;
+    }
+
+    public void setNiveauEtude(String niveauEtude) {
+        this.niveauEtude = niveauEtude;
+    }
+
+    public String getFiliere() {
+        return filiere;
+    }
+
+    public void setFiliere(String filiere) {
+        this.filiere = filiere;
+    }
+
+    public String getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(String semestre) {
+        this.semestre = semestre;
+    }
+
+    public List<Assignation> getAssignations() {
+        return assignations;
+    }
+
+    public void setAssignations(List<Assignation> assignations) {
+        this.assignations = assignations;
+    }
 }

@@ -46,4 +46,64 @@ public class Assignation {
 
     @OneToMany(mappedBy = "assignation", fetch = FetchType.LAZY)
     private List<SeancePlanifiee> seances = new ArrayList<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public Professeur getProfesseur() {
+        return professeur;
+    }
+
+    public void setProfesseur(Professeur professeur) {
+        this.professeur = professeur;
+    }
+
+    public Cours getCours() {
+        return cours;
+    }
+
+    public void setCours(Cours cours) {
+        this.cours = cours;
+    }
+
+    public Salle getSalle() {
+        return salle;
+    }
+
+    public void setSalle(Salle salle) {
+        this.salle = salle;
+    }
+
+    public String getAnneeAcademique() {
+        return anneeAcademique;
+    }
+
+    public void setAnneeAcademique(String anneeAcademique) {
+        this.anneeAcademique = anneeAcademique;
+    }
+
+    public BigDecimal getHeuresPrevues() {
+        return heuresPrevues;
+    }
+
+    public void setHeuresPrevues(BigDecimal heuresPrevues) {
+        this.heuresPrevues = heuresPrevues;
+    }
+
+    public List<PeriodiciteCours> getPeriodicites() {
+        return periodicites;
+    }
+
+    public void setPeriodicites(List<PeriodiciteCours> periodicites) {
+        this.periodicites = periodicites;
+    }
+
+    public List<SeancePlanifiee> getSeances() {
+        return seances;
+    }
+
+    public void setSeances(List<SeancePlanifiee> seances) {
+        this.seances = seances;
+    }
 }

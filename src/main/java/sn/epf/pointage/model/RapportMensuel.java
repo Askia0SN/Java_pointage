@@ -53,4 +53,64 @@ public class RapportMensuel {
 
     @Column(nullable = false)
     private LocalDateTime dateGeneration;
+
+    public Long getId() {
+        return id;
+    }
+
+    public Professeur getProfesseur() {
+        return professeur;
+    }
+
+    public void setProfesseur(Professeur professeur) {
+        this.professeur = professeur;
+    }
+
+    public int getMois() {
+        return mois;
+    }
+
+    public void setMois(int mois) {
+        this.mois = mois;
+    }
+
+    public int getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(int annee) {
+        this.annee = annee;
+    }
+
+    public BigDecimal getHeuresRealisees() {
+        return heuresRealisees;
+    }
+
+    public void setHeuresRealisees(BigDecimal heuresRealisees) {
+        this.heuresRealisees = heuresRealisees;
+    }
+
+    public BigDecimal getMontantXOF() {
+        return montantXOF;
+    }
+
+    public void setMontantXOF(BigDecimal montantXOF) {
+        this.montantXOF = montantXOF;
+    }
+
+    public StatutRapport getStatut() {
+        return statut;
+    }
+
+    public void setStatut(StatutRapport statut) {
+        this.statut = statut;
+    }
+
+    public LocalDateTime getDateGeneration() {
+        return dateGeneration;
+    }
+
+    public void setDateGeneration(LocalDateTime dateGeneration) {
+        this.dateGeneration = dateGeneration;
+    }
 }

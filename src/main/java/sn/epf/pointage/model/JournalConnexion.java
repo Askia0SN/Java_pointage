@@ -36,4 +36,40 @@ public class JournalConnexion {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "utilisateur_id", nullable = false)
     private Utilisateur utilisateur;
+
+    public Long getId() {
+        return id;
+    }
+
+    public ActionConnexion getAction() {
+        return action;
+    }
+
+    public void setAction(ActionConnexion action) {
+        this.action = action;
+    }
+
+    public LocalDateTime getHorodatage() {
+        return horodatage;
+    }
+
+    public void setHorodatage(LocalDateTime horodatage) {
+        this.horodatage = horodatage;
+    }
+
+    public String getAdresseIP() {
+        return adresseIP;
+    }
+
+    public void setAdresseIP(String adresseIP) {
+        this.adresseIP = adresseIP;
+    }
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
 }
