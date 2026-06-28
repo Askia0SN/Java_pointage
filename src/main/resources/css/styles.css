@@ -35,3 +35,86 @@
     -fx-background-radius: 8;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.12), 8, 0, 0, 2);
 }
+
+.login-root {
+    -fx-background-color: linear-gradient(to bottom right, #1A2744, #1F4E79);
+}
+
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 18, 0, 0, 6);
+}
+
+.app-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A2744;
+}
+
+.app-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #1F4E79;
+}
+
+.primary-button {
+    -fx-background-color: #1F4E79;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 10 16;
+}
+
+.primary-button:hover {
+    -fx-background-color: #2E75B6;
+}
+
+.secondary-button {
+    -fx-background-color: #D6E8F7;
+    -fx-text-fill: #1A2744;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 14;
+}
+
+.error-text {
+    -fx-text-fill: #C0392B;
+    -fx-font-weight: bold;
+}
+
+.hint-text {
+    -fx-text-fill: #6B7280;
+}
+
+.sidebar-title {
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-padding: 10 12;
+}
+
+.content-root {
+    -fx-background-color: #F4F7FB;
+}
+
+.page-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A2744;
+}
+
+.page-subtitle {
+    -fx-text-fill: #1F4E79;
+}
+
+.card-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A2744;
+}
