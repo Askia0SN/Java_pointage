@@ -19,7 +19,7 @@
             <Label text="EPF Pointage" styleClass="sidebar-title"/>
             <Button maxWidth="Infinity" text="Dashboard" onAction="#handleShowDashboard" styleClass="nav-button"/>
             <Button maxWidth="Infinity" text="Professeurs" onAction="#handleShowProfesseurs" styleClass="nav-button"/>
-            <Button maxWidth="Infinity" text="Planning" styleClass="nav-button"/>
+            <Button maxWidth="Infinity" text="Planning" onAction="#handleShowPlanning" styleClass="nav-button"/>
             <Button maxWidth="Infinity" text="Pointage" styleClass="nav-button"/>
             <Button maxWidth="Infinity" text="Rapports" styleClass="nav-button"/>
         </VBox>

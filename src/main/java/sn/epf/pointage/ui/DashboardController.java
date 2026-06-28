@@ -51,6 +51,12 @@ public class DashboardController {
     }
 
     @FXML
+    private void handleShowPlanning() throws Exception {
+        Parent planningView = FXMLLoader.load(getClass().getResource("/fxml/planning.fxml"));
+        rootLayout.setCenter(planningView);
+    }
+
+    @FXML
     private void handleLogout() throws Exception {
         authService.deconnecter("127.0.0.1");
 
