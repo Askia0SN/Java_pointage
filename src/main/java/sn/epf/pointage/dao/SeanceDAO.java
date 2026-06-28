@@ -20,6 +20,32 @@ public class SeanceDAO extends AbstractDAO<SeancePlanifiee, Long> {
         return findBetween(today.atStartOfDay(), today.atTime(LocalTime.MAX));
     }
 
+    public List<SeancePlanifiee> findSeancesDuJourByProfesseur(Long professeurId) {
+        LocalDate today = LocalDate.now();
+        LocalDateTime start = today.atStartOfDay();
+        LocalDateTime end = today.atTime(LocalTime.MAX);
+
+        try (Session session = openSession()) {
+            return session.createQuery(
+                            """
+                            select s
+                            from SeancePlanifiee s
+                            join fetch s.assignation a
+                            join fetch a.cours
+                            join fetch a.professeur
+                            where a.professeur.id = :professeurId
+                              and s.dateHeure between :start and :end
+                            order by s.dateHeure
+                            """,
+                            SeancePlanifiee.class
+                    )
+                    .setParameter("professeurId", professeurId)
+                    .setParameter("start", start)
+                    .setParameter("end", end)
+                    .getResultList();
+        }
+    }
+
     public List<SeancePlanifiee> findBetween(LocalDateTime start, LocalDateTime end) {
         try (Session session = openSession()) {
             return session.createQuery(

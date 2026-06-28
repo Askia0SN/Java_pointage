@@ -16,7 +16,12 @@ public class UtilisateurDAO extends AbstractDAO<Utilisateur, Long> {
     public Optional<Utilisateur> findByLogin(String login) {
         try (Session session = openSession()) {
             return session.createQuery(
-                            "from Utilisateur u where u.login = :login",
+                            """
+                            select u
+                            from Utilisateur u
+                            left join fetch u.professeurLie
+                            where u.login = :login
+                            """,
                             Utilisateur.class
                     )
                     .setParameter("login", login)
