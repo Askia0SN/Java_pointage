@@ -1,5 +1,6 @@
 package sn.epf.pointage.config;
 
+import com.mysql.cj.jdbc.AbandonedConnectionCleanupThread;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -24,5 +25,7 @@ public final class HibernateConfig {
         if (sessionFactory != null && !sessionFactory.isClosed()) {
             sessionFactory.close();
         }
+
+        AbandonedConnectionCleanupThread.checkedShutdown();
     }
 }
