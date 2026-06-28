@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -47,19 +48,19 @@ public class DashboardController {
     @FXML
     private void handleShowProfesseurs() throws Exception {
         Parent professeursView = FXMLLoader.load(getClass().getResource("/fxml/professeurs.fxml"));
-        rootLayout.setCenter(professeursView);
+        rootLayout.setCenter(creerVueScrollable(professeursView));
     }
 
     @FXML
     private void handleShowPlanning() throws Exception {
         Parent planningView = FXMLLoader.load(getClass().getResource("/fxml/planning.fxml"));
-        rootLayout.setCenter(planningView);
+        rootLayout.setCenter(creerVueScrollable(planningView));
     }
 
     @FXML
     private void handleShowPointage() throws Exception {
         Parent pointageView = FXMLLoader.load(getClass().getResource("/fxml/pointage.fxml"));
-        rootLayout.setCenter(pointageView);
+        rootLayout.setCenter(creerVueScrollable(pointageView));
     }
 
     @FXML
@@ -88,5 +89,14 @@ public class DashboardController {
         }
 
         return "Acces professeur : aucun profil professeur n'est encore lie a ce compte.";
+    }
+
+    private ScrollPane creerVueScrollable(Parent content) {
+        ScrollPane scrollPane = new ScrollPane(content);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(false);
+        scrollPane.setPannable(true);
+        scrollPane.setStyle("-fx-background-color: transparent; -fx-background: transparent;");
+        return scrollPane;
     }
 }

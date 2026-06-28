@@ -34,7 +34,7 @@
         <Label fx:id="messageLabel" styleClass="hint-text"/>
     </HBox>
 
-    <TableView fx:id="professeursTable" VBox.vgrow="ALWAYS">
+    <TableView fx:id="professeursTable" minHeight="360" prefHeight="420" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn fx:id="matriculeColumn" text="Matricule" prefWidth="150"/>
             <TableColumn fx:id="nomColumn" text="Nom" prefWidth="140"/>

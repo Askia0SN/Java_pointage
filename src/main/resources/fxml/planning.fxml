@@ -34,7 +34,7 @@
                 <Button text="Ajouter un cours" onAction="#handleAddCours" styleClass="primary-button"/>
                 <Button text="Actualiser" onAction="#handleRefresh" styleClass="secondary-button"/>
             </HBox>
-            <TableView fx:id="coursTable" prefHeight="180">
+            <TableView fx:id="coursTable" minHeight="220" prefHeight="220">
                 <columns>
                     <TableColumn fx:id="coursCodeColumn" text="Code" prefWidth="90"/>
                     <TableColumn fx:id="coursIntituleColumn" text="Intitule" prefWidth="180"/>
@@ -53,7 +53,7 @@
                 <Button text="Ajouter une salle" onAction="#handleAddSalle" styleClass="primary-button"/>
                 <Button text="Actualiser" onAction="#handleRefresh" styleClass="secondary-button"/>
             </HBox>
-            <TableView fx:id="sallesTable" prefHeight="180">
+            <TableView fx:id="sallesTable" minHeight="220" prefHeight="220">
                 <columns>
                     <TableColumn fx:id="salleNomColumn" text="Nom" prefWidth="100"/>
                     <TableColumn fx:id="salleCapaciteColumn" text="Capacite" prefWidth="90"/>
@@ -114,7 +114,7 @@
             <Insets top="18" right="18" bottom="18" left="18"/>
         </padding>
         <Label text="Seances planifiees" styleClass="card-title"/>
-        <TableView fx:id="seancesTable" VBox.vgrow="ALWAYS">
+        <TableView fx:id="seancesTable" minHeight="260" prefHeight="260" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="seanceDateColumn" text="Date et heure" prefWidth="180"/>
                 <TableColumn fx:id="seanceDureeColumn" text="Duree" prefWidth="90"/>

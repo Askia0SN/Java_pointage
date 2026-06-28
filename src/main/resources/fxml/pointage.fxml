@@ -27,7 +27,7 @@
         <Label fx:id="messageLabel" styleClass="hint-text"/>
     </HBox>
 
-    <TableView fx:id="seancesTable" VBox.vgrow="ALWAYS">
+    <TableView fx:id="seancesTable" minHeight="360" prefHeight="420" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn fx:id="coursColumn" text="Cours" prefWidth="260"/>
             <TableColumn fx:id="dateColumn" text="Date et heure" prefWidth="180"/>
