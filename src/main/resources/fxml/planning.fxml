@@ -116,6 +116,9 @@
         <Label text="Seances planifiees" styleClass="card-title"/>
         <TableView fx:id="seancesTable" minHeight="260" prefHeight="260" VBox.vgrow="ALWAYS">
             <columns>
+                <TableColumn fx:id="seanceProfesseurColumn" text="Professeur" prefWidth="230"/>
+                <TableColumn fx:id="seanceCoursColumn" text="Matiere" prefWidth="230"/>
+                <TableColumn fx:id="seanceSalleColumn" text="Salle" prefWidth="140"/>
                 <TableColumn fx:id="seanceDateColumn" text="Date et heure" prefWidth="180"/>
                 <TableColumn fx:id="seanceDureeColumn" text="Duree" prefWidth="90"/>
                 <TableColumn fx:id="seanceStatutColumn" text="Statut" prefWidth="130"/>

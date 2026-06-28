@@ -114,6 +114,15 @@ public class PlanningController {
     private TableView<SeancePlanifiee> seancesTable;
 
     @FXML
+    private TableColumn<SeancePlanifiee, String> seanceProfesseurColumn;
+
+    @FXML
+    private TableColumn<SeancePlanifiee, String> seanceCoursColumn;
+
+    @FXML
+    private TableColumn<SeancePlanifiee, String> seanceSalleColumn;
+
+    @FXML
     private TableColumn<SeancePlanifiee, LocalDateTime> seanceDateColumn;
 
     @FXML
@@ -134,6 +143,20 @@ public class PlanningController {
         salleBatimentColumn.setCellValueFactory(new PropertyValueFactory<>("batiment"));
         salleEquipementsColumn.setCellValueFactory(new PropertyValueFactory<>("equipements"));
 
+        seanceProfesseurColumn.setCellValueFactory(cellData -> {
+            Professeur professeur = cellData.getValue().getAssignation().getProfesseur();
+            return new javafx.beans.property.SimpleStringProperty(
+                    professeur.getMatricule() + " - " + professeur.getPrenom() + " " + professeur.getNom()
+            );
+        });
+        seanceCoursColumn.setCellValueFactory(cellData -> {
+            Cours cours = cellData.getValue().getAssignation().getCours();
+            return new javafx.beans.property.SimpleStringProperty(cours.getCode() + " - " + cours.getIntitule());
+        });
+        seanceSalleColumn.setCellValueFactory(cellData -> {
+            Salle salle = cellData.getValue().getAssignation().getSalle();
+            return new javafx.beans.property.SimpleStringProperty(salle.getNom());
+        });
         seanceDateColumn.setCellValueFactory(new PropertyValueFactory<>("dateHeure"));
         seanceDureeColumn.setCellValueFactory(new PropertyValueFactory<>("dureeMinutes"));
         seanceStatutColumn.setCellValueFactory(new PropertyValueFactory<>("statut"));
@@ -156,7 +179,7 @@ public class PlanningController {
         professeurCombo.setItems(FXCollections.observableArrayList(professeurDAO.findActifs()));
         coursCombo.setItems(FXCollections.observableArrayList(coursDAO.findAll()));
         salleCombo.setItems(FXCollections.observableArrayList(salleDAO.findAll()));
-        seancesTable.setItems(FXCollections.observableArrayList(seanceDAO.findAll()));
+        seancesTable.setItems(FXCollections.observableArrayList(seanceDAO.findAllWithDetails()));
         messageLabel.setText("Planning actualise.");
     }
 
