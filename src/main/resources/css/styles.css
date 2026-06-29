@@ -36,6 +36,25 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.12), 8, 0, 0, 2);
 }
 
+.stat-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 18;
+    -fx-effect: dropshadow(three-pass-box, rgba(43,21,107,0.14), 10, 0, 0, 3);
+}
+
+.stat-label {
+    -fx-text-fill: #7A2A76;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.stat-value {
+    -fx-text-fill: #2B156B;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
 .login-root {
     -fx-background-color: linear-gradient(to bottom right, #FFFFFF, #F8F5FF);
 }

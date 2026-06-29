@@ -23,11 +23,11 @@
                     <Image url="@../images/epf-pointage-logo.png"/>
                 </image>
             </ImageView>
-            <Button maxWidth="Infinity" text="Dashboard" onAction="#handleShowDashboard" styleClass="nav-button"/>
-            <Button maxWidth="Infinity" text="Professeurs" onAction="#handleShowProfesseurs" styleClass="nav-button"/>
-            <Button maxWidth="Infinity" text="Planning" onAction="#handleShowPlanning" styleClass="nav-button"/>
-            <Button maxWidth="Infinity" text="Pointage" onAction="#handleShowPointage" styleClass="nav-button"/>
-            <Button maxWidth="Infinity" text="Rapports" onAction="#handleShowRapports" styleClass="nav-button"/>
+            <Button fx:id="dashboardButton" maxWidth="Infinity" text="Dashboard" onAction="#handleShowDashboard" styleClass="nav-button"/>
+            <Button fx:id="professeursButton" maxWidth="Infinity" text="Professeurs" onAction="#handleShowProfesseurs" styleClass="nav-button"/>
+            <Button fx:id="planningButton" maxWidth="Infinity" text="Planning" onAction="#handleShowPlanning" styleClass="nav-button"/>
+            <Button fx:id="pointageButton" maxWidth="Infinity" text="Pointage" onAction="#handleShowPointage" styleClass="nav-button"/>
+            <Button fx:id="rapportsButton" maxWidth="Infinity" text="Rapports" onAction="#handleShowRapports" styleClass="nav-button"/>
         </VBox>
     </left>
 
@@ -49,9 +49,35 @@
                 <padding>
                     <Insets top="24" right="24" bottom="24" left="24"/>
                 </padding>
-                <Label text="Tableau de bord initial" styleClass="card-title"/>
+                <Label text="Synthese du jour" styleClass="card-title"/>
                 <Label fx:id="infoLabel" wrapText="true"/>
-                <Label text="Les cartes de statistiques, alertes et graphiques seront ajoutees dans l'etape suivante." wrapText="true" styleClass="hint-text"/>
+            </VBox>
+
+            <HBox spacing="16">
+                <VBox spacing="8" HBox.hgrow="ALWAYS" styleClass="stat-card">
+                    <Label text="Seances du jour" styleClass="stat-label"/>
+                    <Label fx:id="seancesJourLabel" text="0" styleClass="stat-value"/>
+                </VBox>
+                <VBox spacing="8" HBox.hgrow="ALWAYS" styleClass="stat-card">
+                    <Label text="Presentes" styleClass="stat-label"/>
+                    <Label fx:id="presentsLabel" text="0" styleClass="stat-value status-ok"/>
+                </VBox>
+                <VBox spacing="8" HBox.hgrow="ALWAYS" styleClass="stat-card">
+                    <Label text="Absences probables" styleClass="stat-label"/>
+                    <Label fx:id="absentsLabel" text="0" styleClass="stat-value status-absent"/>
+                </VBox>
+                <VBox spacing="8" HBox.hgrow="ALWAYS" styleClass="stat-card">
+                    <Label text="Alertes du jour" styleClass="stat-label"/>
+                    <Label fx:id="alertesLabel" text="0" styleClass="stat-value status-retard"/>
+                </VBox>
+            </HBox>
+
+            <VBox spacing="12" styleClass="dashboard-card">
+                <padding>
+                    <Insets top="24" right="24" bottom="24" left="24"/>
+                </padding>
+                <Label text="Indicateurs globaux" styleClass="card-title"/>
+                <Label fx:id="globalStatsLabel" wrapText="true" styleClass="hint-text"/>
             </VBox>
         </VBox>
     </center>
