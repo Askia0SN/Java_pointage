@@ -22,17 +22,18 @@
 
     <HBox spacing="12">
         <Button text="Actualiser" onAction="#handleRefresh" styleClass="secondary-button"/>
-        <Button text="Pointer debut" onAction="#handlePointerDebut" styleClass="primary-button"/>
-        <Button text="Pointer fin" onAction="#handlePointerFin" styleClass="secondary-button"/>
+        <Button fx:id="pointerDebutButton" text="Pointer debut" onAction="#handlePointerDebut" styleClass="primary-button"/>
+        <Button fx:id="pointerFinButton" text="Pointer fin" onAction="#handlePointerFin" styleClass="secondary-button"/>
         <Label fx:id="messageLabel" styleClass="hint-text"/>
     </HBox>
 
     <TableView fx:id="seancesTable" minHeight="360" prefHeight="420" VBox.vgrow="ALWAYS">
-        <columns>
-            <TableColumn fx:id="coursColumn" text="Cours" prefWidth="260"/>
-            <TableColumn fx:id="dateColumn" text="Date et heure" prefWidth="180"/>
-            <TableColumn fx:id="dureeColumn" text="Duree" prefWidth="100"/>
-            <TableColumn fx:id="statutColumn" text="Statut" prefWidth="140"/>
+            <columns>
+                <TableColumn fx:id="coursColumn" text="Cours" prefWidth="260"/>
+                <TableColumn fx:id="salleColumn" text="Salle" prefWidth="140"/>
+                <TableColumn fx:id="dateColumn" text="Date et heure" prefWidth="180"/>
+                <TableColumn fx:id="dureeColumn" text="Duree" prefWidth="100"/>
+                <TableColumn fx:id="statutColumn" text="Statut" prefWidth="140"/>
         </columns>
     </TableView>
 </VBox>

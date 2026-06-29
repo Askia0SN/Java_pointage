@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -38,6 +39,9 @@ public class PointageController {
     private TableColumn<SeancePlanifiee, String> coursColumn;
 
     @FXML
+    private TableColumn<SeancePlanifiee, String> salleColumn;
+
+    @FXML
     private TableColumn<SeancePlanifiee, String> dateColumn;
 
     @FXML
@@ -47,9 +51,18 @@ public class PointageController {
     private TableColumn<SeancePlanifiee, String> statutColumn;
 
     @FXML
+    private Button pointerDebutButton;
+
+    @FXML
+    private Button pointerFinButton;
+
+    @FXML
     private void initialize() {
         coursColumn.setCellValueFactory(cellData -> new SimpleStringProperty(
                 cellData.getValue().getAssignation().getCours().getIntitule()
+        ));
+        salleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(
+                cellData.getValue().getAssignation().getSalle().getNom()
         ));
         dateColumn.setCellValueFactory(cellData -> new SimpleStringProperty(
                 cellData.getValue().getDateHeure().format(DATE_TIME_FORMATTER)
@@ -60,6 +73,8 @@ public class PointageController {
         statutColumn.setCellValueFactory(cellData -> new SimpleStringProperty(
                 cellData.getValue().getStatut().name()
         ));
+        pointerDebutButton.disableProperty().bind(seancesTable.getSelectionModel().selectedItemProperty().isNull());
+        pointerFinButton.disableProperty().bind(seancesTable.getSelectionModel().selectedItemProperty().isNull());
 
         handleRefresh();
     }
@@ -80,7 +95,11 @@ public class PointageController {
         seancesTable.setItems(FXCollections.observableArrayList(
                 seanceDAO.findSeancesDuJourByProfesseur(professeur.getId())
         ));
-        messageLabel.setText("Seances du jour actualisees.");
+        if (seancesTable.getItems().isEmpty()) {
+            messageLabel.setText("Aucune seance a pointer aujourd'hui.");
+        } else {
+            messageLabel.setText("Selectionne une seance dans la table, puis clique sur le type de pointage.");
+        }
     }
 
     @FXML
